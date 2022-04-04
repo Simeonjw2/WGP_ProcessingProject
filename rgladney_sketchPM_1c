@@ -1,0 +1,66 @@
+// Intilization
+PVector location;
+PVector velocity;
+PVector gravity;
+int value = 0;
+
+// Intilization Setup
+void setup() {
+  size(640,360);
+  location = new PVector(0,100);
+  velocity = new PVector(2.5,5); 
+  gravity = new PVector(0,0.8);
+}
+
+// Screen and Parameters   
+void draw() {
+  background(300);
+  location.add(velocity);
+  velocity.add(gravity);
+ //If Statements
+   if ((location.x > width) || (location.x < 0)) {
+    velocity.x = velocity.x * -1;
+  }
+  if (location.y > height) {
+    velocity.y = velocity.y * -0.95;
+    location.y = height;
+  }
+ 
+ // Particle/Ball
+  stroke(100);
+  strokeWeight(2);
+  fill(75);
+  ellipse(location.x,location.y, value, value); 
+} 
+
+// On Seperate Tab
+class Ball {
+  
+  float x;
+  float y;
+  float speed;
+  float gravity;
+  float w;
+  
+  Ball(float tempX, float tempY, float tempW) {
+    x = tempX;
+    y = tempY;
+    w = tempW;
+    speed = 0;
+    gravity = 0.1;
+  }
+ 
+  void display() {
+    ellipse(x,y,w,w);
+  }
+}  
+
+// Mouse Clicked Function
+  void mouseClicked() {
+    if (value == 0) {
+      value = 15;
+    } else {
+      value = 0;
+    }
+  }
+// The End
