@@ -1,0 +1,39 @@
+// Intilization
+float x=300; 
+float y; 
+float speed=1; 
+float gravity=0.8; 
+float value=0;
+
+// Intilzation Setup
+void setup(){
+  size(680,380);
+}
+
+// Screen, Ball, and Parameters
+void draw(){
+  background(255);
+  fill(175);
+  stroke(100);
+  strokeWeight(2);
+  fill(75);
+  rectMode(CENTER);
+  ellipse(x,y,value,value);
+  y=y+speed; 
+  speed=speed+gravity;
+  
+//If Statement
+  if (y>height){
+    speed=speed*-0.95;
+    y=height;
+  }
+}
+  
+void mouseClicked() {
+    if (value == 0) {
+      value = 15;
+    } else {
+      value = 0;
+    }
+  }
+// The End
